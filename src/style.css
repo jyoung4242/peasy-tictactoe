@@ -1,0 +1,124 @@
+/*style.css*/
+.board {
+  position: relative;
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 415px;
+  height: 415px;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.cell {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bolder;
+  border: 1px solid blue;
+  width: 125px;
+  height: 125px;
+}
+
+.button {
+  position: absolute;
+  top: 25px;
+  left: 500px;
+  width: 100px;
+  height: 35px;
+  border: 2px blue solid;
+}
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
+
+.vic1 {
+  z-index: 2;
+  position: absolute;
+  left: 10px;
+  top: 65px;
+  width: 420px;
+  height: 15px;
+  background-color: black;
+}
+
+.vic2 {
+  z-index: 2;
+  position: absolute;
+  left: 10px;
+  top: 205px;
+  width: 420px;
+  height: 15px;
+  background-color: black;
+}
+
+.vic3 {
+  z-index: 2;
+  position: absolute;
+  left: 10px;
+  top: 345px;
+  width: 420px;
+  height: 15px;
+  background-color: black;
+}
+
+.vic4 {
+  z-index: 2;
+  position: absolute;
+  left: 77px;
+  top: 15px;
+  width: 15px;
+  height: 400px;
+  background-color: black;
+}
+
+.vic5 {
+  z-index: 2;
+  position: absolute;
+  left: 210px;
+  top: 15px;
+  width: 15px;
+  height: 400px;
+  background-color: black;
+}
+
+.vic6 {
+  z-index: 2;
+  position: absolute;
+  left: 342px;
+  top: 15px;
+  width: 15px;
+  height: 400px;
+  background-color: black;
+}
+
+.vic7 {
+  z-index: 2;
+  position: absolute;
+  left: 210px;
+  top: -35px;
+  width: 15px;
+  height: 500px;
+  transform: rotate(-45deg);
+  background-color: black;
+}
+
+.vic8 {
+  z-index: 2;
+  position: absolute;
+  left: 210px;
+  top: -35px;
+  width: 15px;
+  height: 500px;
+  transform: rotate(45deg);
+  background-color: black;
+}
