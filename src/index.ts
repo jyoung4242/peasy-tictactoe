@@ -3,19 +3,15 @@ import "./style.css";
 
 const template = `
     <div class='board'>
-        <div  \${click@=>clicked}  \${cell<=*cells} class="cell \${cell.color}">\${cell.val}</div>
+        <div  \${click@=>clicked}  \${cell<=*cells:id} class="cell \${cell.color}">\${cell.val}</div>
         <div \${===isButtonVisible} class="vic\${victory}"></div>
         <button \${click@=>reset} \${===isButtonVisible} class="button">RESET</button>
     </div>
 `;
 
 const toggle = () => {
-  console.log("here");
-  if (model.turn == "X") {
-    model.turn = "O";
-  } else {
-    model.turn = "X";
-  }
+  if (model.turn == "X") model.turn = "O";
+  else model.turn = "X";
 };
 
 const checkForVictory = () => {
@@ -58,13 +54,10 @@ const setVictory = (rslt: any) => {
 const clearVictory = () => {
   model.isButtonVisible = false;
   model.victory = null;
-
-  for (let x = 0; x < 9; x++) {
-    model.cells[x] = {
-      color: "",
-      val: "",
-    };
-  }
+  model.cells.forEach((cell: { val: string; color: string }) => {
+    cell.val = "";
+    cell.color = "";
+  });
 };
 
 const getVal = () => {
@@ -80,7 +73,6 @@ const model = {
     else model.cell.color = "red";
     toggle();
     const rslt = checkForVictory();
-    console.log("result: ", rslt);
     if (rslt != null) setVictory(rslt);
   },
   isButtonVisible: false,
@@ -92,6 +84,7 @@ const model = {
 
 for (let x = 0; x < 9; x++) {
   model.cells.push({
+    id: x,
     color: "",
     val: "",
   });
