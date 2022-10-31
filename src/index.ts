@@ -4,7 +4,7 @@ import "./style.css";
 const template = `
     <div class='board'>
         <div  \${click@=>clicked}  \${cell<=*cells:id} class="cell \${cell.color}">\${cell.val}</div>
-        <div \${===isButtonVisible} class="vic\${victory}"></div>
+        <div \${===isVictorySlashVisible} class="vic\${victory}"></div>
         <button \${click@=>reset} \${===isButtonVisible} class="button">RESET</button>
     </div>
 `;
@@ -43,16 +43,28 @@ const checkForVictory = () => {
     return 8;
   }
 
+  const tie = model.cells.every((cell: any) => {
+    return cell.val != "";
+  });
+  console.log("tie  ", tie);
+  if (tie) {
+    return -1;
+  }
+
   return null;
 };
 
 const setVictory = (rslt: any) => {
   model.isButtonVisible = true;
-  model.victory = rslt;
+  if (rslt > 0) {
+    model.victory = rslt;
+    model.isVictorySlashVisible = true;
+  }
 };
 
 const clearVictory = () => {
   model.isButtonVisible = false;
+  model.isVictorySlashVisible = false;
   model.victory = null;
   model.cells.forEach((cell: { val: string; color: string }) => {
     cell.val = "";
@@ -76,6 +88,7 @@ const model = {
     if (rslt != null) setVictory(rslt);
   },
   isButtonVisible: false,
+  isVictorySlashVisible: false,
   victory: 1,
   reset: (event: any, model: any) => {
     clearVictory();
